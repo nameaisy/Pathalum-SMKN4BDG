@@ -1,0 +1,70 @@
+.pagination > li > a
+{
+    background-color: #fff;
+    color: #2A4365;
+    width: 300px;
+    text-align: center;
+    border: 0;
+    border: none;
+}
+
+.pagination > li > a:focus,
+.pagination > li > a:hover,
+.pagination > li > span:focus,
+.pagination > li > span:hover
+{
+    color: #fff;
+    background-color: #2A4365;
+    border: none;
+}
+
+.pagination > .active > a
+{
+    color: white;
+    background-color: #2A4365!Important;
+}
+
+.pagination > .active > a:hover
+{
+    background-color: #2A4365 !Important;
+}
+
+.box-form{
+    max-width: 900px;
+    background: white;
+    margin: 50px auto;
+    padding: 20px 40px;
+    color: #2A4365;
+    border-radius: 5px;
+}
+
+label {
+    display: block;
+    margin-bottom: 30px;
+    font-weight: 400;
+}
+  
+input[type='text'],
+input[type='email'],
+input[type='number'],
+input[type='date'],
+input[type='password'],
+select,
+textarea {
+    display: block;
+    margin-top: 10px;
+    height: 50px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #222831;
+    padding: 10px;
+    font-family: inherit;
+}
+
+.btn-update{
+    background-color: #2A4365;
+}
+
+.btn-update:hover{
+    background-color: #222831;
+}

@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@100;200;300;400;500;600;700;800&display=swap');
+
+
+/* Hide ScrollBar */
+*{
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+}
+
+*::-webkit-scrollbar{
+    display: none;
+}
+
+body {
+    font-family: Sora, sans-serif;
+    padding-top: 70px;
+    background-color: #5392bb;
+    color: white;
+    margin: 0;
+    font-size: 14px;
+}
+
+
+/* Style untuk Form */
+.nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #222831;
+    z-index: 10;
+    min-width: 100%;
+    display: flex;
+    padding-left: 50px;
+    align-self: center;
+    justify-content: center;
+}
+
+nav ul{
+    list-style: none;
+    display: flex;
+}
+
+nav li{
+    margin: 0px 20px;
+    padding-top: 10px;
+    color: #eee;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+
+.smkn4{
+    margin: 8px;
+}
+
+.cross{
+    margin-top: 25px;
+    margin-right: 5px;
+}
+
+.search{
+    margin: 32px 20px 0px 0px;
+}
+
+input[type="search"]{
+    border-radius: 5px;
+    border: 1px solid #222831;
+}
+
+.search-btn{
+    border-radius: 5px;
+    border: 1px solid #222831;
+    background-color: #5392bb;
+}
+
+
+.box-form{  
+    max-width: 500px;
+    background: white;
+    margin: 100px auto;
+    padding: 20px 40px;
+    color: #222831;
+    border-radius: 5px;
+}
+
+
+label {
+    display: block;
+    margin-bottom: 30px;
+    font-weight: 400;
+}
+  
+input[type='text'],
+input[type='email'],
+input[type='number'],
+input[type='date'],
+input[type='password'],
+select,
+textarea {
+    display: block;
+    margin-top: 10px;
+    height: 40px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #222831;
+    padding: 10px;
+    font-family: inherit;
+    background-color: #eee;
+}
+
+#wajib{
+    color: red;
+}
+
+.button-login{
+    display: flex;
+    justify-content: space-between;
+}
+
+.lupa-sandi{
+    text-decoration: none;
+    margin-top: 5px;
+}
+
+.btn-masuk{
+    width: 40%;
+    background-color: #2A4365;
+    margin: 0;
+    margin-bottom: 40px;
+    border: none;
+}
+
+.btn-masuk:hover{
+    background-color: #222831;
+}
+
+.btn-register{
+    width: 100%;
+    display: block;
+    background-color: #2A4365;
+    border: none;
+}
+
+
+.btn-register:hover{
+    background-color: #222831;
+}
