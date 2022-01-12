@@ -1,0 +1,29 @@
+/* Style untuk Form */
+.nav {
+    list-style-type: none;
+    margin: 0;
+    margin-bottom: 100px;
+    padding: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #222831;
+    z-index: 10;
+    min-width: 100%;
+    display: flex;
+    padding-left: 50px;
+    justify-content: space-between;
+}
+
+nav ul{
+    list-style: none;
+    display: flex;
+}
+
+nav li{
+    margin: 0px 20px;
+    padding-top: 10px;
+    color: #eee;
+    text-decoration: none;
+    font-weight: 600;
+}
