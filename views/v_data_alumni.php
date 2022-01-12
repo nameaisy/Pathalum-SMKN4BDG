@@ -15,8 +15,7 @@
 
 <body>
 	
-	<a href="tambah.php">+ TAMBAH MAHASISWA</a>
-	<br/>
+
 	<br/>
 	<table class="table table-bordered">
 		<tr>

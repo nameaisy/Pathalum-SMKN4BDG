@@ -59,7 +59,7 @@ if (isset($_GET['id'])) {
     </div>
 
     <div class="main-container box-form">
-        <h3>Data Alumni</h3>
+        <h3>Data DIri Alumni</h3>
         <table>
             <tr>
                 <th>Nama</th>
