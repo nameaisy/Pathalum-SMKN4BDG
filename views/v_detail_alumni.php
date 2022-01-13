@@ -116,22 +116,92 @@ if (isset($_GET['id'])) {
             if ($d['status'] == 'Bekerja') {
                 $sql = "SELECT * FROM deskripsi_pekerjaan WHERE id_users = '$id';";
 
-                $data = $mysqli-> query($sql) or die($mysqli);
+                $data = $mysqli->query($sql) or die($mysqli);
+
+                $row = mysqli_fetch_array($data);
+
+            ?>
+                <tr>
+                    <th>Nama Perusahaan</th>
+                    <th>:</th>
+                    <td><?php echo $row['nama_perusahaan']; ?></td>
+                </tr>
+                <tr>
+                    <th>Alamat Perusahaan</th>
+                    <th>:</th>
+                    <td><?php echo $row['alamat_perusahaan']; ?></td>
+                </tr>
+                <tr>
+                    <th>Posisi</th>
+                    <th>:</th>
+                    <td><?php echo $row['posisi']; ?></td>
+                </tr>
+
+            <?php
+            }
+            if ($d['status'] == 'Kuliah') {
+                $sql = "SELECT * FROM deskripsi_kuliah WHERE id_users = '$id';";
+
+                $data = $mysqli->query($sql) or die($mysqli);
+
+                $row = mysqli_fetch_array($data);
+            ?>
+                <tr>
+                    <th>Nama Perguruan Tinggi</th>
+                    <th>:</th>
+                    <td><?php echo $row['nama_perguruan_tinggi']; ?></td>
+                </tr>
+                <tr>
+                    <th>Alamat Perguruan Tinggi</th>
+                    <th>:</th>
+                    <td><?php echo $row['alamat_perguruan_tinggi']; ?></td>
+                </tr>
+                <tr>
+                    <th>Fakultas</th>
+                    <th>:</th>
+                    <td><?php echo $row['fakultas']; ?></td>
+                </tr>
+                <tr>
+                    <th>Jurusan</th>
+                    <th>:</th>
+                    <td><?php echo $row['jurusan']; ?></td>
+                </tr>
+                <tr>
+                    <th>Semester</th>
+                    <th>:</th>
+                    <td><?php echo $row['semester']; ?></td>
+                </tr>
+
+            <?php
+            }
+            if ($d['status'] == 'Wirausaha') {
+                $sql = "SELECT * FROM deskripsi_wirausaha WHERE id_users = '$id';";
+
+                $data = $mysqli->query($sql) or die($mysqli);
 
                 $row = mysqli_fetch_array($data);
             
             ?>
             <tr>
-                <th>Nama Perusahaan</th>
+                <th>Nama Usaha</th>
                 <th>:</th>
-                <td><?php echo $row['nama_perusahaan']; ?></td>
+                <td><?php echo $row['nama_usaha']; ?></td>
             </tr>
-
+            <tr>
+                <th>Alamat Usaha</th>
+                <th>:</th>
+                <td><?php echo $row['alamat_usaha']; ?></td>
+            </tr>
+            <tr>
+                <th>Jenis Produk</th>
+                <th>:</th>
+                <td><?php echo $row['jenis_produk']; ?></td>
+            </tr>
             <?php
-            } 
+            }
             ?>
         </table>
     </div>
 </body>
-
+            
 </html>
