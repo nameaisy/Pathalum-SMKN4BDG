@@ -52,19 +52,15 @@ nav li{
     text-decoration: none;
     font-weight: 600;
 }
-.casa-logo{
-    margin-left: 0px;
-    margin-right: 40px;
-}
+
 
 .smkn4{
-    margin: 10px;
-    margin-right: 50px;
+    margin: 8px;
 }
 
 .cross{
     margin-top: 25px;
-    margin-right: 40px;
+    margin-right: 5px;
 }
 
 .search{
@@ -123,26 +119,26 @@ textarea {
 
 .button-login{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .lupa-sandi{
     text-decoration: none;
-    margin-top: 40px;
+    margin-top: 5px;
 }
 
-.btn-masuk{
+.btn-daftar{
     width: 40%;
     background-color: #2A4365;
     margin: 40px 0;
     border: none;
 }
 
-.btn-masuk:hover{
+.btn-daftar:hover{
     background-color: #222831;
 }
 
-.btn-register{
+.btn-masuk{
     width: 100%;
     display: block;
     background-color: #2A4365;
@@ -150,6 +146,6 @@ textarea {
 }
 
 
-.btn-register:hover{
+.btn-masuk:hover{
     background-color: #222831;
 }

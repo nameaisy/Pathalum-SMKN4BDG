@@ -15,7 +15,7 @@
     <div class="header">
         <ul class="nav">
           <li class="nav-item navbar-brand">
-            <img src="../assets/logo/CASADEV.svg" alt="" width="90" height=90" class="casa-logo">
+            <img src="../assets/logo/CASADEV.svg" alt="" width="90" height="90" class="casa-logo">
           </li>
           <li class="nav-item navbar-brand">
             <img src="../assets/logo/x.png" alt="" width="25" height="25" class="cross">
@@ -44,7 +44,7 @@
               <button class="btn btn-primary btn-masuk" type="submit" name="masuk" value="masuk">Masuk</button>
             </div>
 
-            <a href="register.html" style="text-decoration: none;">
+            <a href="register.php" style="text-decoration: none;">
               <button class="btn btn-primary btn-register" type="button">Tidak memiliki akun?</button>
             </a>
 

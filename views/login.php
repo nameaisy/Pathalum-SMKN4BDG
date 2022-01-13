@@ -14,17 +14,17 @@
 
         if ($data->num_rows != 0)
         {
-            $row = mysqli_fetch_object($data);
-            $_SESSION['id'] = $row -> id;
-            $_SESSION['email'] = $row -> email;
-            $_SESSION['username'] = $row -> username;
-            $_SESSION['nama_lengkap'] = $row -> nama_lengkap;
-            $_SESSION['password'] = $row -> password;
-            $_SESSION['level'] = $row -> level;
-            
-            if($_SESSION['level'] == "admin"){
-                $user = "admin";
-                header("location:v_admin.php");
+        $row = mysqli_fetch_object($data);
+        $_SESSION['id'] = $row -> id;
+        $_SESSION['email'] = $row -> email;
+        $_SESSION['username'] = $row -> username;
+        $_SESSION['nama_lengkap'] = $row -> nama_lengkap;
+        $_SESSION['password'] = $row -> password;
+        $_SESSION['level'] = $row -> level;
+        
+        if($_SESSION['level'] == "admin"){
+            $user = "admin";
+            header("location:v_admin.php");
             } else if ($_SESSION['level'] == "alumni"){
                 $user = "alumni";
                 header("location:v_alumni.php");
