@@ -52,8 +52,8 @@
         <?php
                 if($tab == "akun"){
 
-                $user = $_SESSION['id'];
-                $sql = " SELECT *  FROM users WHERE id='$user'";
+                $user = $_SESSION['id_user'];
+                $sql = " SELECT *  FROM users WHERE id_user='$user'";
 
                 $data = $mysqli -> query($sql) or die($mysqli->error);
 
@@ -89,9 +89,9 @@
                     if(empty($email) OR empty($username) OR empty($nama_lengkap)){
                         echo "Field Tidak Boleh Kosong!";
                     } else {
-                        $id = $_SESSION['id'];
+                        $id_user = $_SESSION['id_user'];
                         $sql = "UPDATE `users` SET email='$email', username='$username', nama_lengkap='$nama_lengkap'
-                                WHERE id='$id';";
+                                WHERE id='$id_user';";
                         if($mysqli -> query($sql)){
                             $_SESSION['email'] = $email;
                             $_SESSION['username'] = $username;
@@ -105,7 +105,7 @@
 
         <?php    
         } else if ($tab == "data"){
-            $user = $_SESSION['id'];
+            $user = $_SESSION['id_user'];
             $sql = " SELECT *  FROM alumni WHERE id_users='$user'";
 
             $data = $mysqli -> query($sql) or die($mysqli->error);
@@ -203,11 +203,11 @@
                 $no_ijazah = $_POST['no_ijazah'];
                 $no_skhun = $_POST['no_skhun'];
 
-                $id = $_SESSION['id'];
+                $id_user = $_SESSION['id_user'];
                 $sql = "UPDATE `alumni` SET jenis_kelamin='$jenis_kelamin', alamat='$alamat', tempat_lahir='$tempat_lahir',
                         tanggal_lahir='$tanggal_lahir', no_telepon='$no_telepon', jurusan='$jurusan', tahun_masuk='$tahun_masuk',
                         tahun_lulus='$tahun_lulus', no_ijazah='$no_ijazah', no_skhun='$no_skhun'
-                        WHERE id_users='$id';";
+                        WHERE id_users='$id_user';";
                 if($mysqli -> query($sql)){
                     echo "<script type='text/javascript'>document.location.href = 'v_alumni.php?page=profil&tab=data';</script>";
                 }
@@ -217,7 +217,7 @@
         <?php
 
         } else if ($tab == "status"){
-            $user = $_SESSION['id'];
+            $user = $_SESSION['id_user'];
             $sql = " SELECT status FROM alumni WHERE id_users='$user'";
 
             $data = $mysqli -> query($sql) or die($mysqli->error);
@@ -244,17 +244,17 @@
             if(isset($_POST['update'])){
                 $status = $_POST['status'];
 
-                $id = $_SESSION['id'];
-                $sql = " UPDATE `alumni` SET status = '$status' WHERE id_users = '$id';";
+                $id_user = $_SESSION['id_user'];
+                $sql = " UPDATE `alumni` SET status = '$status' WHERE id_users = '$id_user';";
                 if($mysqli -> query($sql)){
 
                     if($row['status'] == "Tidak Bekerja Ataupun Kuliah"){
                         $sql1 = " UPDATE `deskripsi_pekerjaan` SET nama_perusahaan = NULL, alamat_perusahaan = NULL,
-                            posisi = NULL WHERE id_users = '$id';";
+                            posisi = NULL WHERE id_users = '$id_user';";
                         $sql2 = "UPDATE `deskripsi_kuliah` SET nama_perguruan_tinggi = NULL, alamat_perguruan_tinggi = NULL,
-                                    fakultas = NULL, jurusan = NULL, semester = NULL WHERE id_users = '$id';";
+                                    fakultas = NULL, jurusan = NULL, semester = NULL WHERE id_users = '$id_user';";
                         $sql3= "UPDATE `deskripsi_wirausaha` SET nama_usaha = NULL, alamat_usaha = NULL, jenis_produk = NULL
-                                WHERE id_users = '$id';";
+                                WHERE id_users = '$id_user';";
 
                         if($mysqli -> query($sql1) && $mysqli -> query($sql2) && $mysqli -> query($sql3)){
                             echo "<script type='text/javascript'>document.location.href = 'v_alumni.php?page=profil&tab=status';</script>";
@@ -266,7 +266,7 @@
 
         <?php
             if($row['status'] == "Bekerja"){
-                $user = $_SESSION['id'];
+                $user = $_SESSION['id_user'];
                 $sql = " SELECT * FROM deskripsi_pekerjaan WHERE id_users='$user'";
 
                 $data = $mysqli -> query($sql) or die($mysqli->error);
@@ -304,15 +304,15 @@
                 $alamat_perusahaan = $_POST['alamat_perusahaan'];
                 $posisi = $_POST['posisi'];
 
-                $id = $_SESSION['id'];
+                $id_user = $_SESSION['id_user'];
                 $sql = " UPDATE `deskripsi_pekerjaan` SET nama_perusahaan = '$nama_perusahaan', alamat_perusahaan = '$alamat_perusahaan',
-                        posisi = '$posisi' WHERE id_users = '$id';";
+                        posisi = '$posisi' WHERE id_users = '$id_user';";
                 if($mysqli -> query($sql)){
 
                     $sql1 = "UPDATE `deskripsi_kuliah` SET nama_perguruan_tinggi = NULL, alamat_perguruan_tinggi = NULL,
-                            fakultas = NULL, jurusan = NULL, semester = NULL WHERE id_users = '$id';";
+                            fakultas = NULL, jurusan = NULL, semester = NULL WHERE id_users = '$id_user';";
                     $sql2 = "UPDATE `deskripsi_wirausaha` SET nama_usaha = NULL, alamat_usaha = NULL, jenis_produk = NULL
-                            WHERE id_users = '$id';";
+                            WHERE id_users = '$id_user';";
 
                     if($mysqli -> query($sql1) && $mysqli -> query($sql2)){
                     echo "<script type='text/javascript'>document.location.href = 'v_alumni.php?page=profil&tab=status';</script>";
@@ -323,7 +323,7 @@
 
         <?php
             } else if ($row['status'] == "Kuliah"){
-                $user = $_SESSION['id'];
+                $user = $_SESSION['id_user'];
                 $sql = " SELECT * FROM deskripsi_kuliah WHERE id_users='$user'";
 
                 $data = $mysqli -> query($sql) or die($mysqli->error);
@@ -377,14 +377,14 @@
                     $jurusan = $_POST['jurusan'];
                     $semester = $_POST['semester'];
 
-                    $id = $_SESSION['id'];
+                    $id_user = $_SESSION['id_user'];
                     $sql = "UPDATE `deskripsi_kuliah` SET nama_perguruan_tinggi = '$nama_perguruan_tinggi', alamat_perguruan_tinggi = '$alamat_perguruan_tinggi',
-                            fakultas = '$fakultas', jurusan = '$jurusan', semester = '$semester' WHERE id_users = '$id';";
+                            fakultas = '$fakultas', jurusan = '$jurusan', semester = '$semester' WHERE id_users = '$id_user';";
                     if($mysqli -> query($sql)){
                         $sql1 = " UPDATE `deskripsi_pekerjaan` SET nama_perusahaan = NULL, alamat_perusahaan = NULL,
-                                posisi = NULL WHERE id_users = '$id';";
+                                posisi = NULL WHERE id_users = '$id_user';";
                         $sql2 = "UPDATE `deskripsi_wirausaha` SET nama_usaha = NULL, alamat_usaha = NULL, jenis_produk = NULL
-                                WHERE id_users = '$id';";
+                                WHERE id_users = '$id_user';";
 
                         if($mysqli -> query($sql1) && $mysqli -> query($sql2)){
                         echo "<script type='text/javascript'>document.location.href = 'v_alumni.php?page=profil&tab=status';</script>";
@@ -395,7 +395,7 @@
 
         <?php
             } else if ($row['status'] == "Wirausaha"){
-                $user = $_SESSION['id'];
+                $user = $_SESSION['id_user'];
                 $sql = " SELECT * FROM deskripsi_wirausaha WHERE id_users='$user'";
 
                 $data = $mysqli -> query($sql) or die($mysqli->error);
@@ -433,16 +433,16 @@
                     $alamat_usaha = $_POST['alamat_usaha'];
                     $jenis_produk = $_POST['jenis_produk'];
 
-                    $id = $_SESSION['id'];
+                    $id_user = $_SESSION['id_user'];
                     $sql = "UPDATE `deskripsi_wirausaha` SET nama_usaha = '$nama_usaha', alamat_usaha = '$alamat_usaha', jenis_produk = '$jenis_produk'
-                                WHERE id_users = '$id';";
+                                WHERE id_users = '$id_user';";
 
                     if($mysqli -> query($sql)){
 
                         $sql1 = " UPDATE `deskripsi_pekerjaan` SET nama_perusahaan = NULL, alamat_perusahaan = NULL,
-                                posisi = NULL WHERE id_users = '$id';";
+                                posisi = NULL WHERE id_users = '$id_user';";
                         $sql2 = "UPDATE `deskripsi_kuliah` SET nama_perguruan_tinggi = NULL, alamat_perguruan_tinggi = NULL,
-                                fakultas = NULL, jurusan = NULL, semester = NULL WHERE id_users = '$id';";
+                                fakultas = NULL, jurusan = NULL, semester = NULL WHERE id_users = '$id_user';";
                         
                         if($mysqli -> query($sql1) && $mysqli -> query($sql2)){
                         echo "<script type='text/javascript'>document.location.href = 'v_alumni.php?page=profil&tab=status';</script>";

@@ -1,9 +1,9 @@
 <?php
 include '../lib/library.php';
 
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-    $sql = "SELECT * FROM users,alumni WHERE users.id = " . $id;
+if (isset($_GET['id_user'])) {
+    $id_user = $_GET['id_user'];
+    $sql = "SELECT * FROM users,alumni WHERE users.id = " . $id_user;
     $result = $mysqli->query($sql);
     if ($result->num_rows > 0) {
         $d = $result->fetch_array();
@@ -114,7 +114,7 @@ if (isset($_GET['id'])) {
             </tr>
             <?php
             if ($d['status'] == 'Bekerja') {
-                $sql = "SELECT * FROM deskripsi_pekerjaan WHERE id_users = '$id';";
+                $sql = "SELECT * FROM deskripsi_pekerjaan WHERE id_users = '$id_user';";
 
                 $data = $mysqli->query($sql) or die($mysqli);
 
@@ -140,7 +140,7 @@ if (isset($_GET['id'])) {
             <?php
             }
             if ($d['status'] == 'Kuliah') {
-                $sql = "SELECT * FROM deskripsi_kuliah WHERE id_users = '$id';";
+                $sql = "SELECT * FROM deskripsi_kuliah WHERE id_users = '$id_user';";
 
                 $data = $mysqli->query($sql) or die($mysqli);
 
@@ -175,7 +175,7 @@ if (isset($_GET['id'])) {
             <?php
             }
             if ($d['status'] == 'Wirausaha') {
-                $sql = "SELECT * FROM deskripsi_wirausaha WHERE id_users = '$id';";
+                $sql = "SELECT * FROM deskripsi_wirausaha WHERE id_users = '$id_user';";
 
                 $data = $mysqli->query($sql) or die($mysqli);
 

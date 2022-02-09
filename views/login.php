@@ -15,7 +15,7 @@
         if ($data->num_rows != 0)
         {
         $row = mysqli_fetch_object($data);
-        $_SESSION['id'] = $row -> id;
+        $_SESSION['id_user'] = $row -> id_user;
         $_SESSION['email'] = $row -> email;
         $_SESSION['username'] = $row -> username;
         $_SESSION['nama_lengkap'] = $row -> nama_lengkap;
