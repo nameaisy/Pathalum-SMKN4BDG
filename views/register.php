@@ -4,13 +4,12 @@
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $email = $_POST['email'];
         $username = $_POST['username'];
-        $nama_lengkap = $_POST['nama_lengkap'];
         $password = $_POST['password'];
         $konfirm_password = $_POST['konfirm_password'];
 
         if ($password == $konfirm_password) {
             if (cek_email($mysqli, $email) == 0) {
-                $sql = " INSERT INTO users (email, username, nama_lengkap, password, level) values ('$email', '$username', '$nama_lengkap', SHA1('$password'), 'alumni')";
+                $sql = " INSERT INTO users (email, username, password, level) values ('$email', '$username', SHA1('$password'), 'alumni')";
 
                 $data = $mysqli -> query($sql) or die($mysqli->error);
                 if ($data) {
@@ -20,10 +19,12 @@
                     $id_user = $row['id_user'];
                     $sql2 = "INSERT INTO alumni (id_users, jenis_kelamin, alamat, tempat_lahir, no_telepon, jurusan, tahun_masuk, tahun_lulus, no_ijazah, no_skhun, status) values ('$id_user', NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL, NULL);";
                     $datasql2 = $mysqli -> query($sql2) or die($mysqli->error);
+                    $row2 = mysqli_fetch_array($datasql2);
+                    $id_alumni = $row2['id_alumni'];
 
-                    $sql3 = "INSERT INTO deskripsi_pekerjaan (id_users, nama_perusahaan, alamat_perusahaan, posisi) values ('$id_user', NULL, NULL, NULL);";
-                    $sql4 = "INSERT INTO deskripsi_kuliah (id_users, nama_perguruan_tinggi, alamat_perguruan_tinggi, fakultas, jurusan, semester) values ('$id_user', NULL, NULL, NULL, NULL, NULL);";
-                    $sql5 = "INSERT INTO deskripsi_wirausaha (id_users, nama_usaha, alamat_usaha, jenis_produk) values ('$id_user', NULL, NULL, NULL);";
+                    $sql3 = "INSERT INTO deskripsi_pekerjaan (id_alumni, nama_perusahaan, alamat_perusahaan, posisi) values ('$id_alumni', NULL, NULL, NULL);";
+                    $sql4 = "INSERT INTO deskripsi_kuliah (id_alumni, nama_perguruan_tinggi, alamat_perguruan_tinggi, fakultas, jurusan, semester) values ('$id_alumni', NULL, NULL, NULL, NULL, NULL);";
+                    $sql5 = "INSERT INTO deskripsi_wirausaha (id_alumni, nama_usaha, alamat_usaha, jenis_produk) values ('$id_alumni', NULL, NULL, NULL);";
 
                     $datasql3 = $mysqli -> query($sql3) or die($mysqli->error);
                     $datasql4 = $mysqli -> query($sql4) or die($mysqli->error);

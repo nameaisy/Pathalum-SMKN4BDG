@@ -26,12 +26,12 @@
 			<th>Tahun Lulus</th>
 			<th>Opsi</th>
 		</tr>
-		<?php 
-		include '../lib/library.php';
-		$no = 1;
-		$data = mysqli_query($mysqli,"select * from alumni,users where level = 'alumni'");
-		while($d = mysqli_fetch_array($data)){
-			?>
+		<?php
+        include '../lib/library.php';
+        $no = 1;
+        $data = mysqli_query($mysqli, "select * from alumni");
+        while ($d = mysqli_fetch_array($data)) {
+            ?>
 			<tr>
 				<td><?php echo $no++; ?></td>
 				<td><?php echo $d['nama_lengkap']; ?></td>
@@ -39,26 +39,26 @@
 				<td><?php echo $d['tahun_masuk']; ?></td>
 				<td><?php echo $d['tahun_lulus']; ?></td>
                 <td>
-					<a href="edit.php?id=<?php echo $d['id_user']; ?>">
-                    <button class="btn btn-primary btn-masuk" type="submit" name="masuk" value="masuk">
-                    <img src="https://img.icons8.com/material-rounded/24/000000/edit--v1.png"/>
-                    </button>
+					<a href="edit.php?id_alumni=<?php echo $d['id_alumni']; ?>">
+						<button class="btn btn-primary btn-masuk" type="submit" name="masuk" value="masuk">
+							<img src="https://img.icons8.com/material-rounded/24/ffffff/edit--v1.png"/>
+						</button>
                     </a>
-                    <a href="edit.php?id=<?php echo $d['id_user']; ?>">
-                    <button class="btn btn-primary btn-masuk" type="submit" name="masuk" value="masuk">
-                    <img src="https://img.icons8.com/material-rounded/24/000000/trash.png"/>
-                    </button>
+                    <a href="edit.php?id_alumni=<?php echo $d['id_alumni']; ?>">
+						<button class="btn btn-primary btn-masuk" type="submit" name="masuk" value="masuk">
+							<img src="https://img.icons8.com/material-rounded/24/ffffff/trash.png"/>
+                    	</button>
                     </a>
-                    <a href="v_detail_alumni.php?id=<?php echo $d['id_user']; ?>">
-                    <button class="btn btn-primary btn-masuk" type="submit" name="masuk" value="masuk">
-                    <img src="https://img.icons8.com/material-rounded/24/000000/view-details.png"/>
-                    </button>
+                    <a href="v_detail_alumni.php?id_alumni=<?php echo $d['id_alumni']; ?>">
+                    	<button class="btn btn-primary btn-masuk" type="submit" name="masuk" value="masuk">
+							<img src="https://img.icons8.com/material-rounded/24/ffffff/view-details.png"/>
+						</button>
                     </a>
 				</td>
 			</tr>
-			<?php 
-		}
-		?>
+			<?php
+        }
+        ?>
 	</table>
 </body>
 </html>

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 09, 2022 at 05:24 AM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.11
+-- Generation Time: Feb 11, 2022 at 02:43 AM
+-- Server version: 10.4.14-MariaDB
+-- PHP Version: 7.4.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,6 +30,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `alumni` (
   `id_alumni` int(15) NOT NULL,
   `id_users` int(15) NOT NULL,
+  `nama_lengkap` varchar(100) DEFAULT NULL,
   `jenis_kelamin` enum('Laki-laki','Perempuan') DEFAULT NULL,
   `alamat` varchar(100) DEFAULT NULL,
   `tempat_lahir` varchar(100) DEFAULT NULL,
@@ -47,8 +48,9 @@ CREATE TABLE `alumni` (
 -- Dumping data for table `alumni`
 --
 
-INSERT INTO `alumni` (`id_alumni`, `id_users`, `jenis_kelamin`, `alamat`, `tempat_lahir`, `tanggal_lahir`, `no_telepon`, `jurusan`, `tahun_masuk`, `tahun_lulus`, `no_ijazah`, `no_skhun`, `status`) VALUES
-(1, 2, 'Laki-laki', 'PH Pride', 'Bandung', '2000-10-30', '08123456789', 'Rekayasa Perangkat Lunak', '2019', '2022', 'xxxxxxxxxxx', 'xxxxxxxxxxx', 'Tidak Bekerja Ataupun Kuliah');
+INSERT INTO `alumni` (`id_alumni`, `id_users`, `nama_lengkap`, `jenis_kelamin`, `alamat`, `tempat_lahir`, `tanggal_lahir`, `no_telepon`, `jurusan`, `tahun_masuk`, `tahun_lulus`, `no_ijazah`, `no_skhun`, `status`) VALUES
+(2, 2, 'Alumni', 'Laki-laki', 'PH Pride', 'Bandung', '2004-10-22', '08989898989', 'Rekayasa Perangkat Lunak', '2019', '2022', '0000000000', '0000000000', 'Bekerja'),
+(3, 3, 'Naufal', 'Laki-laki', 'GBI', 'Bandung', '2004-02-21', '0000000000', 'Rekayasa Perangkat Lunak', '2019', '2022', '0000000000', '0000000000', 'Tidak Bekerja Ataupun Kuliah');
 
 -- --------------------------------------------------------
 
@@ -58,7 +60,7 @@ INSERT INTO `alumni` (`id_alumni`, `id_users`, `jenis_kelamin`, `alamat`, `tempa
 
 CREATE TABLE `deskripsi_kuliah` (
   `id_kuliah` int(15) NOT NULL,
-  `id_users` int(15) NOT NULL,
+  `id_alumni` int(15) NOT NULL,
   `nama_perguruan_tinggi` varchar(100) DEFAULT NULL,
   `alamat_perguruan_tinggi` varchar(100) DEFAULT NULL,
   `fakultas` varchar(100) DEFAULT NULL,
@@ -70,8 +72,9 @@ CREATE TABLE `deskripsi_kuliah` (
 -- Dumping data for table `deskripsi_kuliah`
 --
 
-INSERT INTO `deskripsi_kuliah` (`id_kuliah`, `id_users`, `nama_perguruan_tinggi`, `alamat_perguruan_tinggi`, `fakultas`, `jurusan`, `semester`) VALUES
-(1, 2, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `deskripsi_kuliah` (`id_kuliah`, `id_alumni`, `nama_perguruan_tinggi`, `alamat_perguruan_tinggi`, `fakultas`, `jurusan`, `semester`) VALUES
+(2, 2, NULL, NULL, NULL, NULL, NULL),
+(3, 3, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -81,7 +84,7 @@ INSERT INTO `deskripsi_kuliah` (`id_kuliah`, `id_users`, `nama_perguruan_tinggi`
 
 CREATE TABLE `deskripsi_pekerjaan` (
   `id_pekerjaan` int(15) NOT NULL,
-  `id_users` int(15) NOT NULL,
+  `id_alumni` int(15) NOT NULL,
   `nama_perusahaan` varchar(100) DEFAULT NULL,
   `alamat_perusahaan` varchar(100) DEFAULT NULL,
   `posisi` varchar(100) DEFAULT NULL
@@ -91,8 +94,8 @@ CREATE TABLE `deskripsi_pekerjaan` (
 -- Dumping data for table `deskripsi_pekerjaan`
 --
 
-INSERT INTO `deskripsi_pekerjaan` (`id_pekerjaan`, `id_users`, `nama_perusahaan`, `alamat_perusahaan`, `posisi`) VALUES
-(1, 2, '', '', '');
+INSERT INTO `deskripsi_pekerjaan` (`id_pekerjaan`, `id_alumni`, `nama_perusahaan`, `alamat_perusahaan`, `posisi`) VALUES
+(2, 2, 'Casadev', 'Kliningan 6', 'Nganggur');
 
 -- --------------------------------------------------------
 
@@ -102,7 +105,7 @@ INSERT INTO `deskripsi_pekerjaan` (`id_pekerjaan`, `id_users`, `nama_perusahaan`
 
 CREATE TABLE `deskripsi_wirausaha` (
   `id_wirausaha` int(15) NOT NULL,
-  `id_users` int(15) NOT NULL,
+  `id_alumni` int(15) NOT NULL,
   `nama_usaha` varchar(100) DEFAULT NULL,
   `alamat_usaha` varchar(100) DEFAULT NULL,
   `jenis_produk` varchar(100) DEFAULT NULL
@@ -112,8 +115,9 @@ CREATE TABLE `deskripsi_wirausaha` (
 -- Dumping data for table `deskripsi_wirausaha`
 --
 
-INSERT INTO `deskripsi_wirausaha` (`id_wirausaha`, `id_users`, `nama_usaha`, `alamat_usaha`, `jenis_produk`) VALUES
-(1, 2, NULL, NULL, NULL);
+INSERT INTO `deskripsi_wirausaha` (`id_wirausaha`, `id_alumni`, `nama_usaha`, `alamat_usaha`, `jenis_produk`) VALUES
+(2, 2, NULL, NULL, NULL),
+(3, 3, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -140,7 +144,6 @@ CREATE TABLE `users` (
   `id_user` int(15) NOT NULL,
   `email` varchar(50) NOT NULL,
   `username` varchar(50) NOT NULL,
-  `nama_lengkap` varchar(300) NOT NULL,
   `password` varchar(100) NOT NULL,
   `level` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -149,9 +152,10 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id_user`, `email`, `username`, `nama_lengkap`, `password`, `level`) VALUES
-(1, 'admin', 'admin', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'admin'),
-(2, 'alumni@alumni', 'alumni', 'alumni rpl 3', 'c52c830f927fe3c895a5499defa8b6a078d701b7', 'alumni');
+INSERT INTO `users` (`id_user`, `email`, `username`, `password`, `level`) VALUES
+(1, 'admin', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'admin'),
+(2, 'alumni@alumni', 'alumni', 'c52c830f927fe3c895a5499defa8b6a078d701b7', 'alumni'),
+(3, 'duba@duba', 'duba', '1b053a6f39def2810cd54590fe7ba486908c895b', 'alumni');
 
 --
 -- Indexes for dumped tables
@@ -169,21 +173,21 @@ ALTER TABLE `alumni`
 --
 ALTER TABLE `deskripsi_kuliah`
   ADD PRIMARY KEY (`id_kuliah`),
-  ADD KEY `id_users` (`id_users`);
+  ADD KEY `id_alumni` (`id_alumni`);
 
 --
 -- Indexes for table `deskripsi_pekerjaan`
 --
 ALTER TABLE `deskripsi_pekerjaan`
   ADD PRIMARY KEY (`id_pekerjaan`),
-  ADD KEY `id_users` (`id_users`);
+  ADD KEY `id_alumni` (`id_alumni`);
 
 --
 -- Indexes for table `deskripsi_wirausaha`
 --
 ALTER TABLE `deskripsi_wirausaha`
   ADD PRIMARY KEY (`id_wirausaha`),
-  ADD KEY `id_users` (`id_users`);
+  ADD KEY `id_alumni` (`id_alumni`);
 
 --
 -- Indexes for table `postingan`
@@ -206,25 +210,25 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `alumni`
 --
 ALTER TABLE `alumni`
-  MODIFY `id_alumni` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_alumni` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `deskripsi_kuliah`
 --
 ALTER TABLE `deskripsi_kuliah`
-  MODIFY `id_kuliah` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_kuliah` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `deskripsi_pekerjaan`
 --
 ALTER TABLE `deskripsi_pekerjaan`
-  MODIFY `id_pekerjaan` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_pekerjaan` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `deskripsi_wirausaha`
 --
 ALTER TABLE `deskripsi_wirausaha`
-  MODIFY `id_wirausaha` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_wirausaha` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `postingan`
@@ -236,7 +240,7 @@ ALTER TABLE `postingan`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_user` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables
@@ -252,19 +256,19 @@ ALTER TABLE `alumni`
 -- Constraints for table `deskripsi_kuliah`
 --
 ALTER TABLE `deskripsi_kuliah`
-  ADD CONSTRAINT `deskripsi_kuliah_ibfk_1` FOREIGN KEY (`id_users`) REFERENCES `users` (`id_user`);
+  ADD CONSTRAINT `deskripsi_kuliah_ibfk_1` FOREIGN KEY (`id_alumni`) REFERENCES `alumni` (`id_alumni`);
 
 --
 -- Constraints for table `deskripsi_pekerjaan`
 --
 ALTER TABLE `deskripsi_pekerjaan`
-  ADD CONSTRAINT `deskripsi_pekerjaan_ibfk_1` FOREIGN KEY (`id_users`) REFERENCES `users` (`id_user`);
+  ADD CONSTRAINT `deskripsi_pekerjaan_ibfk_1` FOREIGN KEY (`id_alumni`) REFERENCES `alumni` (`id_alumni`);
 
 --
 -- Constraints for table `deskripsi_wirausaha`
 --
 ALTER TABLE `deskripsi_wirausaha`
-  ADD CONSTRAINT `deskripsi_wirausaha_ibfk_1` FOREIGN KEY (`id_users`) REFERENCES `users` (`id_user`);
+  ADD CONSTRAINT `deskripsi_wirausaha_ibfk_1` FOREIGN KEY (`id_alumni`) REFERENCES `alumni` (`id_alumni`);
 
 --
 -- Constraints for table `postingan`

@@ -1,18 +1,20 @@
 <?php
 include '../lib/library.php';
 
-if (isset($_GET['id_user'])) {
-    $id_user = $_GET['id_user'];
-    $sql = "SELECT * FROM users,alumni WHERE users.id = " . $id_user;
+if (isset($_GET['id_alumni'])) {
+    $id_alumni = $_GET['id_alumni'];
+    $sql = "SELECT * FROM alumni WHERE id_alumni = " . $id_alumni;
+    $sql1 = "SELECT alumni.id_users, users.email, users.username FROM alumni, users WHERE alumni.id_users = users.id_user AND users.level = 'alumni' ";
     $result = $mysqli->query($sql);
+    $result1 = $mysqli -> query($sql1) or die($mysqli->error);
     if ($result->num_rows > 0) {
-        $d = $result->fetch_array();
+        $data_alumni = $result->fetch_array();
+        $data_user = $result1->fetch_array();
     } else {
         exit("ID Tidak ditemukan.");
     }
-} else {
-    exit("ID Tidak ditemukan");
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,58 +50,58 @@ if (isset($_GET['id_user'])) {
             <tr>
                 <th>email</th>
                 <th>:</th>
-                <td><?php echo $d['email']; ?></td>
+                <td><?php echo $data_user['email']; ?></td>
             </tr>
             <tr>
                 <th>username</th>
                 <th>:</th>
-                <td><?php echo $d['username']; ?></td>
+                <td><?php echo $data_user['username']; ?></td>
             </tr>
         </table>
     </div>
 
     <div class="main-container box-form">
-        <h3>Data DIri Alumni</h3>
+        <h3>Data Diri Alumni</h3>
         <table>
             <tr>
                 <th>Nama</th>
                 <th>:</th>
-                <td><?php echo $d['nama_lengkap']; ?></td>
+                <td><?php echo $data_alumni['nama_lengkap']; ?></td>
             </tr>
             <tr>
                 <th>Jenis Kelamin</th>
                 <th>:</th>
-                <td><?php echo $d['jenis_kelamin']; ?></td>
+                <td><?php echo $data_alumni['jenis_kelamin']; ?></td>
             </tr>
             <tr>
                 <th>Alamat</th>
                 <th>:</th>
-                <td><?php echo $d['alamat']; ?></td>
+                <td><?php echo $data_alumni['alamat']; ?></td>
             </tr>
             <tr>
                 <th>Tempat Tanggal Lahir</th>
                 <th>:</th>
-                <td><?php echo $d['tempat_lahir']; ?>, <?= $d['tanggal_lahir'] ?></td>
+                <td><?php echo $data_alumni['tempat_lahir']; ?>, <?= $data_alumni['tanggal_lahir'] ?></td>
             </tr>
             <tr>
                 <th>No. Telepon</th>
                 <th>:</th>
-                <td><?php echo $d['no_telepon']; ?></td>
+                <td><?php echo $data_alumni['no_telepon']; ?></td>
             </tr>
             <tr>
                 <th>Jurusan</th>
                 <th>:</th>
-                <td><?php echo $d['jurusan']; ?></td>
+                <td><?php echo $data_alumni['jurusan']; ?></td>
             </tr>
             <tr>
                 <th>Tahun Masuk</th>
                 <th>:</th>
-                <td><?php echo $d['tahun_masuk']; ?></td>
+                <td><?php echo $data_alumni['tahun_masuk']; ?></td>
             </tr>
             <tr>
                 <th>Tahun Lulus</th>
                 <th>:</th>
-                <td><?php echo $d['tahun_lulus']; ?></td>
+                <td><?php echo $data_alumni['tahun_lulus']; ?></td>
             </tr>
         </table>
     </div>
@@ -110,11 +112,11 @@ if (isset($_GET['id_user'])) {
             <tr>
                 <th>Status</th>
                 <th>:</th>
-                <td><?php echo $d['status']; ?></td>
+                <td><?php echo $data_alumni['status']; ?></td>
             </tr>
             <?php
-            if ($d['status'] == 'Bekerja') {
-                $sql = "SELECT * FROM deskripsi_pekerjaan WHERE id_users = '$id_user';";
+            if ($data_alumni['status'] == 'Bekerja') {
+                $sql = "SELECT * FROM deskripsi_pekerjaan WHERE id_alumni = '$id_alumni';";
 
                 $data = $mysqli->query($sql) or die($mysqli);
 
@@ -139,8 +141,8 @@ if (isset($_GET['id_user'])) {
 
             <?php
             }
-            if ($d['status'] == 'Kuliah') {
-                $sql = "SELECT * FROM deskripsi_kuliah WHERE id_users = '$id_user';";
+            if ($data_alumni['status'] == 'Kuliah') {
+                $sql = "SELECT * FROM deskripsi_kuliah WHERE id_alumni = '$id_alumni';";
 
                 $data = $mysqli->query($sql) or die($mysqli);
 
@@ -174,8 +176,8 @@ if (isset($_GET['id_user'])) {
 
             <?php
             }
-            if ($d['status'] == 'Wirausaha') {
-                $sql = "SELECT * FROM deskripsi_wirausaha WHERE id_users = '$id_user';";
+            if ($data_alumni['status'] == 'Wirausaha') {
+                $sql = "SELECT * FROM deskripsi_wirausaha WHERE id_alumni = '$id_alumni';";
 
                 $data = $mysqli->query($sql) or die($mysqli);
 

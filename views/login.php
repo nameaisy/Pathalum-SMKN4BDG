@@ -8,7 +8,7 @@
         $email = $_POST['email'];
         $password = $_POST['password'];
 
-        $sql = " SELECT *  FROM users WHERE (email = '$email' OR username =  '$email' OR nama_lengkap = '$email') AND password = SHA1('$password')";
+        $sql = " SELECT *  FROM users WHERE (email = '$email' OR username =  '$email') AND password = SHA1('$password')";
 
         $data = $mysqli -> query($sql) or die($mysqli->error);
 
@@ -18,7 +18,6 @@
         $_SESSION['id_user'] = $row -> id_user;
         $_SESSION['email'] = $row -> email;
         $_SESSION['username'] = $row -> username;
-        $_SESSION['nama_lengkap'] = $row -> nama_lengkap;
         $_SESSION['password'] = $row -> password;
         $_SESSION['level'] = $row -> level;
         
