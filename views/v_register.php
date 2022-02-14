@@ -43,12 +43,6 @@
                 <input name="username" class="form-control" type="text" id="username" placeholder="Masukkan username anda" required />
             </label>
 
-            <label for="nama_lengkap" id="nama_lengkap-label">
-                <img src="https://img.icons8.com/material-rounded/24/000000/name.png"/>
-                Nama Lengkap<span id="wajib">*</span>
-                <input name="nama_lengkap" class="form-control" type="text" id="nama_lengkap" placeholder="Masukkan nama lengkap anda" required />
-            </label>
-
             <label for="password" id="password-label">
                 <img src="https://img.icons8.com/material-rounded/24/000000/lock--v1.png"/>
                 Password<span id="wajib">*</span>
