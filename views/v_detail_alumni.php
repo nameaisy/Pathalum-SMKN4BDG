@@ -3,13 +3,10 @@ include '../lib/library.php';
 
 if (isset($_GET['id_alumni'])) {
     $id_alumni = $_GET['id_alumni'];
-    $sql = "SELECT * FROM alumni WHERE id_alumni = " . $id_alumni;
-    $sql1 = "SELECT alumni.id_users, users.email, users.username FROM alumni, users WHERE alumni.id_users = users.id_user AND users.level = 'alumni' ";
+    $sql = "SELECT * FROM alumni, users WHERE id_alumni = " . $id_alumni . " AND alumni.id_users = users.id_user AND users.level = 'alumni' ";
     $result = $mysqli->query($sql);
-    $result1 = $mysqli -> query($sql1) or die($mysqli->error);
     if ($result->num_rows > 0) {
         $data_alumni = $result->fetch_array();
-        $data_user = $result1->fetch_array();
     } else {
         exit("ID Tidak ditemukan.");
     }
@@ -50,12 +47,12 @@ if (isset($_GET['id_alumni'])) {
             <tr>
                 <th>email</th>
                 <th>:</th>
-                <td><?php echo $data_user['email']; ?></td>
+                <td><?php echo $data_alumni['email']; ?></td>
             </tr>
             <tr>
                 <th>username</th>
                 <th>:</th>
-                <td><?php echo $data_user['username']; ?></td>
+                <td><?php echo $data_alumni['username']; ?></td>
             </tr>
         </table>
     </div>
