@@ -40,7 +40,7 @@
     $host = 'localhost';
     $user = 'root';
     $pass = '';
-    $db = 'hubin';
+    $db = 'pathalum';
 
     $mysqli = mysqli_connect($host, $user, $pass, $db)
                 or die('Tidak dapat konek ke Database');
