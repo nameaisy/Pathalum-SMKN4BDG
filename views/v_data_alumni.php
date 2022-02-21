@@ -39,12 +39,12 @@
 				<td><?php echo $d['tahun_masuk']; ?></td>
 				<td><?php echo $d['tahun_lulus']; ?></td>
                 <td>
-					<a href="edit.php?id_alumni=<?php echo $d['id_alumni']; ?>">
+					<a href="v_edit_data.php?id_alumni=<?php echo $d['id_alumni']; ?>&tab=akun">
 						<button class="btn btn-primary btn-masuk" type="submit" name="masuk" value="masuk">
 							<img src="https://img.icons8.com/material-rounded/24/ffffff/edit--v1.png"/>
 						</button>
                     </a>
-                    <a href="edit.php?id_alumni=<?php echo $d['id_alumni']; ?>">
+                    <a href="delete.php?id_alumni=<?php echo $d['id_alumni']; ?>">
 						<button class="btn btn-primary btn-masuk" type="submit" name="masuk" value="masuk">
 							<img src="https://img.icons8.com/material-rounded/24/ffffff/trash.png"/>
                     	</button>

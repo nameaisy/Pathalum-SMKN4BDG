@@ -33,6 +33,11 @@ if (isset($_GET['id_alumni'])) {
 <body>
     <div class="header">
         <ul class="nav">
+            <li class="nav-item navbar-brand back">
+                <a href="v_admin.php?page=data">
+                    <img src="https://img.icons8.com/material-rounded/48/ffffff/left.png"/>
+                </a>
+            </li>
             <li class="nav-item navbar-brand">
                 <img src="../assets/logo/SMKN4.svg" alt="" width="60" height="60" class="smkn4" colo\\>
                 SMK NEGERI 4 BANDUNG
