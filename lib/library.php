@@ -2,7 +2,7 @@
     session_start();
 
     function base_url(){
-        return "http://localhost/Pathalum-SMKN4BDG_2";
+        return "http://localhost/Pathalum-SMKN4BDG/";
     }
 
     function flash($tipe, $pesan = ''){

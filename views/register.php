@@ -20,7 +20,7 @@
                     $sql2 = "INSERT INTO alumni (id_users, nama_lengkap, jenis_kelamin, alamat, tempat_lahir, no_telepon, jurusan, tahun_masuk, tahun_lulus, no_ijazah, no_skhun, status) values ('$id_user',  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);";
                     $datasql2 = $mysqli -> query($sql2) or die($mysqli->error);
                     $sql6 = "SELECT * FROM alumni, users WHERE alumni.id_users = " . $id_user;
-                    $datasql6 = $mysqli -> query($sql6) or die($mysqlo->error);
+                    $datasql6 = $mysqli -> query($sql6) or die($mysqli->error);
                     $row6 = mysqli_fetch_array($datasql6);
                     $id_alumni = $row6['id_alumni'];
 
