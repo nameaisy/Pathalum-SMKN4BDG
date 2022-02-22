@@ -42,6 +42,10 @@ $lulusan = mysqli_fetch_array($data1);
 
 <body>
 
+	<div class="welcome">
+		<img src="../assets/home_admin.jpg" alt="" class="welcome-img">
+	</div>
+
 	<div class="box">
 		<div class="box-form">
 			<div class="kotakmm">
@@ -61,7 +65,6 @@ $lulusan = mysqli_fetch_array($data1);
 			</div>
 		</div>
 	</div>
-
 
 	<div class="container">
 		<div class="box-form">

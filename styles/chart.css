@@ -1,14 +1,26 @@
+.welcome-img{
+    height: 300px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    z-index: -10;
+}
+
 .container{
     width: 50%;
     display: flex;
     justify-content: space-evenly;
-
+    margin-top: -200px;
 }
+
 
 .box-form{  
     max-width: 100%;
     background: white;
-    margin: 100px auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 300px;
     padding: 20px 40px;
     color: #222831;
     border-radius: 20px;
