@@ -5,7 +5,6 @@
     $sql = "SELECT * FROM alumni, users where alumni.id_users = " . $user;
     $data = $mysqli -> query($sql) or die($mysqli->error);
     $row = mysqli_fetch_array($data);
-
 ?>   
 
 <!DOCTYPE html>
@@ -24,14 +23,22 @@
 </head>
 <body>
     <div class="welcome">
-        <img src="../assets/wb-waves.png" alt="" class="welcome-img">
+        <img src="../assets/wb-waves.png" alt="" class="welcome-img">   
         <img src="https://img.icons8.com/material-rounded/48/000000/student-male.png" id="student"/>
         <h3 style="text-align: center;">
-            Halo, <?php echo $row['nama_lengkap']; ?>
+            <?php if($row['nama_lengkap'] != null){
+                echo "Halo, " . $row['nama_lengkap'] . "!";
+            ?>
         </h3>
-        <h5 style="text-align: center;">
+        <<?php echo $row['nama_lengkap'] == null ? "h3" : "h4";?> style="text-align: center;">
             Selamat datang di Pathalum!
-        </h5>
+            <?php
+            } else {
+                echo "Selamat datang di Pathalum!";
+                echo nl2br("\nSilakan lengkapi data diri anda di halaman profile!");
+            }
+            ?>
+        <<?php echo $row['nama_lengkap'] == null ? "/h3" : "/h4";?>
     </div>
 </body>
 </html>

@@ -156,7 +156,7 @@
                 <option disabled>──────────</option>
                 <option value="Multimedia">Multimedia</option>
                 <option value="Rekayasa Perangkat Lunak">Rekayasa Perangkat Lunak</option>
-                <option value="Teknik Komputer Jarindgan">Teknik Komputer Jaringan</option>
+                <option value="Teknik Komputer Jaringan">Teknik Komputer Jaringan</option>
                 <option value="Teknik Audio Video">Teknik Audio Video</option>
                 <option value="Teknik Instalasi Tenaga Listrik">Teknik Instalasi Tenaga Listrik</option>
                 <option value="Teknik Otomasi Industri">Teknik Otomasi Industri</option>

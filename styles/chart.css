@@ -1,0 +1,47 @@
+.container{
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+.box-form{  
+    max-width: 100%;
+    background: white;
+    margin: 100px auto;
+    padding: 20px 40px;
+    color: #222831;
+    border-radius: 20px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.kotakmm{
+    background-color: #5F27CD;
+    width: 20%;
+    border-radius: 10px;
+    margin: 10px;
+    text-align: center;
+    color: #fff;
+    padding: 10px 0;
+}
+
+.kotakrpl{
+    background-color: #1DD1A1;
+    width: 20%;
+    border-radius: 10px;
+    margin: 10px;
+    text-align: center;
+    color: #fff;
+    padding: 10px 0;
+}
+
+.kotaktkj{
+    background-color: #EE5253;
+    width: 20%;
+    border-radius: 10px;
+    margin: 10px;
+    text-align: center;
+    color: #fff;
+    padding: 10px 0;
+}

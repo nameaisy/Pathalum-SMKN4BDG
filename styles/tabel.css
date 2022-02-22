@@ -3,3 +3,24 @@
     border: 3px solid #3182ce;
     margin: 0px;
 }
+
+.btn-masuk{
+    height: 40px;
+    margin-right: 5px;
+    background-color: #5392bb;
+    border: 0;
+}
+
+.btn-register{
+    height: 40px;
+    background-color: #5392bb;
+    border: 0;
+}
+
+.btn-masuk:hover{
+    background-color: #2A4365;
+}
+
+.btn-register:hover{
+    background-color: #2A4365;
+}
