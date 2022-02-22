@@ -17,10 +17,12 @@
                     $datasql1 = $mysqli -> query($sql1) or die($mysqli->error);
                     $row = mysqli_fetch_array($datasql1);
                     $id_user = $row['id_user'];
-                    $sql2 = "INSERT INTO alumni (id_users, jenis_kelamin, alamat, tempat_lahir, no_telepon, jurusan, tahun_masuk, tahun_lulus, no_ijazah, no_skhun, status) values ('$id_user', NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL, NULL);";
+                    $sql2 = "INSERT INTO alumni (id_users, nama_lengkap, jenis_kelamin, alamat, tempat_lahir, no_telepon, jurusan, tahun_masuk, tahun_lulus, no_ijazah, no_skhun, status) values ('$id_user',  NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);";
                     $datasql2 = $mysqli -> query($sql2) or die($mysqli->error);
-                    $row2 = mysqli_fetch_array($datasql2);
-                    $id_alumni = $row2['id_alumni'];
+                    $sql6 = "SELECT * FROM alumni, users WHERE alumni.id_users = " . $id_user;
+                    $datasql6 = $mysqli -> query($sql6) or die($mysqli->error);
+                    $row6 = mysqli_fetch_array($datasql6);
+                    $id_alumni = $row6['id_alumni'];
 
                     $sql3 = "INSERT INTO deskripsi_pekerjaan (id_alumni, nama_perusahaan, alamat_perusahaan, posisi) values ('$id_alumni', NULL, NULL, NULL);";
                     $sql4 = "INSERT INTO deskripsi_kuliah (id_alumni, nama_perguruan_tinggi, alamat_perguruan_tinggi, fakultas, jurusan, semester) values ('$id_alumni', NULL, NULL, NULL, NULL, NULL);";

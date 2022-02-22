@@ -33,12 +33,22 @@
                         Halaman Utama
                     </a>
                 </li>
+
+                <li <?php if($page == "data") echo "class='active'";?>>
+                    <a href="?page=data">
+                        <img src="https://img.icons8.com/material-rounded/24/ffffff/user--v1.png"/>
+                        Data Alumni
+                    </a>
+                </li>
+
                 <li <?php if($page == "postingan") echo "class='active'";?>>
                     <a href="?page=postingan">
                         <img src="https://img.icons8.com/material-rounded/24/ffffff/edit--v1.png"/>    
                         Postingan
                     </a>
                 </li>
+
+
                 <li <?php if($page == "loker") echo "class='active'";?>>
                     <a href="?page=loker">
                         <img src="https://img.icons8.com/material-rounded/24/ffffff/briefcase.png"/>
@@ -50,12 +60,6 @@
                     <hr class="solid" />
                 </li>
 
-                <li <?php if($page == "data") echo "class='active'";?>>
-                    <a href="?page=data">
-                        <img src="https://img.icons8.com/material-rounded/24/ffffff/user--v1.png"/>
-                        Data Alumni
-                    </a>
-                </li>
                 <li>
                     <a href="logout.php">
                         <img src="https://img.icons8.com/material-rounded/24/ffffff/exit.png"/>    

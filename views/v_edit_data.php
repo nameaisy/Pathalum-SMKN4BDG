@@ -25,17 +25,17 @@
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
             <li class="page-item <?php if($tab == "akun") echo 'active'?>">
-                <a class="page-link" href="?page=profil&tab=akun">
+                <a class="page-link" href="&tab=akun">
                     Akun
                 </a>
             </li>
             <li class="page-item <?php if($tab == "data") echo 'active'?>">
-                <a class="page-link" href="?page=profil&tab=data">
+                <a class="page-link" href="&tab=data">
                     Data Diri
                 </a>
             </li>
             <li class="page-item <?php if($tab == "status") echo 'active'?>">
-                <a class="page-link" href="?page=profil&tab=status">
+                <a class="page-link" href="&tab=status">
                     Status
                 </a>
             </li>
@@ -52,12 +52,16 @@
         <?php
                 if($tab == "akun"){
 
-                $user = $_SESSION['id_user'];
-                $sql = " SELECT *  FROM users WHERE id_user='$user'";
-
-                $data = $mysqli -> query($sql) or die($mysqli->error);
-
-                $row = mysqli_fetch_array($data);
+                    if (isset($_GET['id_alumni'])) {
+                        $id_alumni = $_GET['id_alumni'];
+                        $sql = "SELECT * FROM alumni, users WHERE id_alumni = " . $id_alumni . " AND alumni.id_users = users.id_user AND users.level = 'alumni' ";
+                        $result = $mysqli->query($sql);
+                        if ($result->num_rows > 0) {
+                            $data_alumni = $result->fetch_array();
+                        } else {
+                            exit("ID Tidak ditemukan.");
+                        }
+                    }
                 
             ?>
         <label for="email" id="email-label">
@@ -98,12 +102,16 @@
 
         <?php    
         } else if ($tab == "data"){
-            $user = $_SESSION['id_user'];
-            $sql = " SELECT *  FROM alumni WHERE id_users='$user'";
-
-            $data = $mysqli -> query($sql) or die($mysqli->error);
-
-            $row = mysqli_fetch_array($data);
+            if (isset($_GET['id_alumni'])) {
+                $id_alumni = $_GET['id_alumni'];
+                $sql = "SELECT * FROM alumni, users WHERE id_alumni = " . $id_alumni . " AND alumni.id_users = users.id_user AND users.level = 'alumni' ";
+                $result = $mysqli->query($sql);
+                if ($result->num_rows > 0) {
+                    $data_alumni = $result->fetch_array();
+                } else {
+                    exit("ID Tidak ditemukan.");
+                }
+            }
         ?>
 
         <label for="nama_lengkap" id="nama_lengkap-label">
@@ -156,7 +164,7 @@
                 <option disabled>──────────</option>
                 <option value="Multimedia">Multimedia</option>
                 <option value="Rekayasa Perangkat Lunak">Rekayasa Perangkat Lunak</option>
-                <option value="Teknik Komputer Jaringan">Teknik Komputer Jaringan</option>
+                <option value="Teknik Komputer Jarindgan">Teknik Komputer Jaringan</option>
                 <option value="Teknik Audio Video">Teknik Audio Video</option>
                 <option value="Teknik Instalasi Tenaga Listrik">Teknik Instalasi Tenaga Listrik</option>
                 <option value="Teknik Otomasi Industri">Teknik Otomasi Industri</option>

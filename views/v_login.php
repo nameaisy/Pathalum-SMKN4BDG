@@ -30,7 +30,7 @@
         <form action="login.php" method="POST" class="box-form">
             <label for="email" id="email-label">
               <i class="bi bi-envelope"></i>
-              Email/Username/Nama Lengkap<span id="wajib">*</span>
+              Email/Username<span id="wajib">*</span>
               <input name="email" class="form-control" type="text" id="email" placeholder="Masukkan email anda" required />
             </label>
 

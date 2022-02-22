@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 11, 2022 at 02:43 AM
+-- Generation Time: Feb 21, 2022 at 05:07 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -50,7 +50,7 @@ CREATE TABLE `alumni` (
 
 INSERT INTO `alumni` (`id_alumni`, `id_users`, `nama_lengkap`, `jenis_kelamin`, `alamat`, `tempat_lahir`, `tanggal_lahir`, `no_telepon`, `jurusan`, `tahun_masuk`, `tahun_lulus`, `no_ijazah`, `no_skhun`, `status`) VALUES
 (2, 2, 'Alumni', 'Laki-laki', 'PH Pride', 'Bandung', '2004-10-22', '08989898989', 'Rekayasa Perangkat Lunak', '2019', '2022', '0000000000', '0000000000', 'Bekerja'),
-(3, 3, 'Naufal', 'Laki-laki', 'GBI', 'Bandung', '2004-02-21', '0000000000', 'Rekayasa Perangkat Lunak', '2019', '2022', '0000000000', '0000000000', 'Tidak Bekerja Ataupun Kuliah');
+(7, 7, 'Abdul Azis Basyari', 'Laki-laki', 'Bandung', 'Bandung', '2004-10-22', '083804302067', 'Rekayasa Perangkat Lunak', '2019', '2022', '-', '-', 'Tidak Bekerja Ataupun Kuliah');
 
 -- --------------------------------------------------------
 
@@ -74,7 +74,7 @@ CREATE TABLE `deskripsi_kuliah` (
 
 INSERT INTO `deskripsi_kuliah` (`id_kuliah`, `id_alumni`, `nama_perguruan_tinggi`, `alamat_perguruan_tinggi`, `fakultas`, `jurusan`, `semester`) VALUES
 (2, 2, NULL, NULL, NULL, NULL, NULL),
-(3, 3, NULL, NULL, NULL, NULL, NULL);
+(4, 7, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -95,7 +95,8 @@ CREATE TABLE `deskripsi_pekerjaan` (
 --
 
 INSERT INTO `deskripsi_pekerjaan` (`id_pekerjaan`, `id_alumni`, `nama_perusahaan`, `alamat_perusahaan`, `posisi`) VALUES
-(2, 2, 'Casadev', 'Kliningan 6', 'Nganggur');
+(2, 2, 'Casadev', 'Kliningan 6', 'Nganggur'),
+(6, 7, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -117,7 +118,7 @@ CREATE TABLE `deskripsi_wirausaha` (
 
 INSERT INTO `deskripsi_wirausaha` (`id_wirausaha`, `id_alumni`, `nama_usaha`, `alamat_usaha`, `jenis_produk`) VALUES
 (2, 2, NULL, NULL, NULL),
-(3, 3, NULL, NULL, NULL);
+(4, 7, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -126,10 +127,10 @@ INSERT INTO `deskripsi_wirausaha` (`id_wirausaha`, `id_alumni`, `nama_usaha`, `a
 --
 
 CREATE TABLE `postingan` (
-  `id_postingan` int(11) NOT NULL,
+  `id_postingan` int(15) NOT NULL,
   `judul_postingan` varchar(100) NOT NULL,
   `deskripsi` varchar(100) NOT NULL,
-  `id_users` int(11) NOT NULL,
+  `id_users` int(15) NOT NULL,
   `tanggal_dibuat` date NOT NULL,
   `photo` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -155,7 +156,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id_user`, `email`, `username`, `password`, `level`) VALUES
 (1, 'admin', 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997', 'admin'),
 (2, 'alumni@alumni', 'alumni', 'c52c830f927fe3c895a5499defa8b6a078d701b7', 'alumni'),
-(3, 'duba@duba', 'duba', '1b053a6f39def2810cd54590fe7ba486908c895b', 'alumni');
+(7, 'abdul', 'abdul', '3fb86591025780f719fcd21d6fd06a8330659670', 'alumni');
 
 --
 -- Indexes for dumped tables
@@ -210,37 +211,37 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `alumni`
 --
 ALTER TABLE `alumni`
-  MODIFY `id_alumni` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_alumni` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `deskripsi_kuliah`
 --
 ALTER TABLE `deskripsi_kuliah`
-  MODIFY `id_kuliah` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_kuliah` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `deskripsi_pekerjaan`
 --
 ALTER TABLE `deskripsi_pekerjaan`
-  MODIFY `id_pekerjaan` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_pekerjaan` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `deskripsi_wirausaha`
 --
 ALTER TABLE `deskripsi_wirausaha`
-  MODIFY `id_wirausaha` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_wirausaha` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `postingan`
 --
 ALTER TABLE `postingan`
-  MODIFY `id_postingan` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_postingan` int(15) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_user` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables
@@ -250,31 +251,31 @@ ALTER TABLE `users`
 -- Constraints for table `alumni`
 --
 ALTER TABLE `alumni`
-  ADD CONSTRAINT `alumni_ibfk_1` FOREIGN KEY (`id_users`) REFERENCES `users` (`id_user`) ON UPDATE CASCADE;
+  ADD CONSTRAINT `alumni_ibfk_1` FOREIGN KEY (`id_users`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `deskripsi_kuliah`
 --
 ALTER TABLE `deskripsi_kuliah`
-  ADD CONSTRAINT `deskripsi_kuliah_ibfk_1` FOREIGN KEY (`id_alumni`) REFERENCES `alumni` (`id_alumni`);
+  ADD CONSTRAINT `deskripsi_kuliah_ibfk_1` FOREIGN KEY (`id_alumni`) REFERENCES `alumni` (`id_alumni`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `deskripsi_pekerjaan`
 --
 ALTER TABLE `deskripsi_pekerjaan`
-  ADD CONSTRAINT `deskripsi_pekerjaan_ibfk_1` FOREIGN KEY (`id_alumni`) REFERENCES `alumni` (`id_alumni`);
+  ADD CONSTRAINT `deskripsi_pekerjaan_ibfk_1` FOREIGN KEY (`id_alumni`) REFERENCES `alumni` (`id_alumni`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `deskripsi_wirausaha`
 --
 ALTER TABLE `deskripsi_wirausaha`
-  ADD CONSTRAINT `deskripsi_wirausaha_ibfk_1` FOREIGN KEY (`id_alumni`) REFERENCES `alumni` (`id_alumni`);
+  ADD CONSTRAINT `deskripsi_wirausaha_ibfk_1` FOREIGN KEY (`id_alumni`) REFERENCES `alumni` (`id_alumni`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `postingan`
 --
 ALTER TABLE `postingan`
-  ADD CONSTRAINT `postingan_ibfk_1` FOREIGN KEY (`id_users`) REFERENCES `users` (`id_user`);
+  ADD CONSTRAINT `postingan_ibfk_1` FOREIGN KEY (`id_users`) REFERENCES `users` (`id_user`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -2,7 +2,7 @@
     session_start();
 
     function base_url(){
-        return "http://localhost/Pathalum-SMKN4BDG_2";
+        return "http://localhost/Pathalum-SMKN4BDG/";
     }
 
     function flash($tipe, $pesan = ''){
@@ -40,7 +40,7 @@
     $host = 'localhost';
     $user = 'root';
     $pass = '';
-    $db = 'hubin';
+    $db = 'pathalum';
 
     $mysqli = mysqli_connect($host, $user, $pass, $db)
                 or die('Tidak dapat konek ke Database');
