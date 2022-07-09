@@ -1,3 +1,2 @@
-[LAST UPDATE 22/2/2022] 
-Currently working on v_postingan_admin.php
-(HAVEN'T PUSH THE CSS FILE YET)
+[LAST UPDATE 4/5/2022] 
+Finish
